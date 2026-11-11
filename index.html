@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1930">
+  <title>COMEX QUIZ LIVE | FACDO</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="glow glow1"></div><div class="glow glow2"></div>
+  <header class="topbar">
+    <div class="brand"><div class="brandicon">🌐</div><div><strong>COMEX QUIZ <em>LIVE</em></strong><small>Administração • Comércio Exterior</small></div></div>
+    <div class="topright"><span id="connection" class="pill">Conectando...</span><button id="leaveBtn" class="textbtn hidden">Sair</button></div>
+  </header>
+  <main class="shell">
+    <section id="setupView" class="card hidden">
+      <div class="eyebrow">CONFIGURAÇÃO INICIAL</div><h1>Falta conectar o Firebase</h1>
+      <p>Edite o arquivo <code>firebase-config.js</code> e siga o <strong>GUIA_INSTALACAO.md</strong>. Depois de configurado, os alunos só precisam abrir o link ou escanear o QR Code.</p>
+    </section>
+
+    <section id="studentView" class="hidden">
+      <div id="joinCard" class="card hero">
+        <span class="eyebrow">ENTRE NA COMPETIÇÃO</span><h1>O mundo está na sua mochila!</h1>
+        <p>15 perguntas sobre Comércio Exterior. Você ganha pontos pelos <strong>acertos</strong> e pela <strong>velocidade</strong>.</p>
+        <div class="joinbox">
+          <label for="nickname">Seu apelido (sem nome completo)</label>
+          <div class="joinrow"><input id="nickname" maxlength="28" autocomplete="nickname" placeholder="Ex.: Águia do Comex"><button id="joinBtn" class="primary">Entrar no jogo</button></div>
+          <p id="joinInfo" class="muted small">Aguarde o professor abrir a sala.</p>
+        </div>
+      </div>
+      <div id="studentGame" class="hidden">
+        <div class="cols">
+          <div class="stack">
+            <div class="card" id="studentMain"></div>
+          </div>
+          <aside class="card rankcard"><h2>🏆 Ranking ao vivo</h2><div id="studentRank" class="ranking"></div></aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="teacherView" class="hidden">
+      <div id="teacherLogin" class="card hero">
+        <span class="eyebrow">ÁREA DO PROFESSOR</span><h1>Comando da competição</h1>
+        <p>Entre com a conta Google autorizada nas regras do Firebase. O gabarito fica somente no seu computador.</p>
+        <button id="googleLogin" class="primary">Entrar com Google</button>
+        <p id="teacherLoginInfo" class="muted small"></p>
+      </div>
+      <div id="teacherDashboard" class="hidden">
+        <div class="teachheader">
+          <div><span class="eyebrow">PAINEL DO PROFESSOR</span><h1>COMEX QUIZ LIVE</h1><p id="teacherStatus" class="muted">Preparando sala...</p></div>
+          <div class="actions"><button id="newGameBtn" class="secondary">Nova sala / zerar</button><button id="startBtn" class="primary">▶ Iniciar jogo</button><button id="revealBtn" class="secondary">Mostrar resposta</button><button id="nextBtn" class="primary">Próxima pergunta →</button><button id="finishBtn" class="danger">Encerrar</button></div>
+        </div>
+        <div class="cols teachercols">
+          <div class="stack">
+            <div class="card" id="teacherMain">
+              <h2>Primeiro acesso</h2><p>Carregue o gabarito privado e crie uma sala. Não envie o arquivo de gabarito para o GitHub.</p>
+            </div>
+            <div class="card">
+              <h2>🔐 Gabarito privado</h2>
+              <p class="muted small">Selecione o arquivo <code>COMEX_Quiz_Live_GABARITO_PRIVADO.json</code> no seu computador. Ele não será enviado ao servidor.</p>
+              <input id="keyFile" type="file" accept=".json,application/json">
+              <label class="muted small" style="display:flex;gap:8px;align-items:center;margin-top:12px"><input id="rememberKey" type="checkbox" style="width:auto"> Lembrar gabarito neste navegador (somente computador do professor)</label>
+              <button id="forgetKey" class="textbtn">Apagar gabarito salvo neste navegador</button>
+              <div id="keyStatus" class="statusline">Nenhum gabarito carregado.</div>
+            </div>
+          </div>
+          <aside class="stack">
+            <div class="card">
+              <h2>📲 QR Code dos alunos</h2><div id="qrcode" class="qr"></div>
+              <a id="joinLink" class="longlink" href="#" target="_blank" rel="noopener">Link de acesso</a>
+              <button id="copyLink" class="secondary full">Copiar link</button>
+              <p class="muted small">Projete esta tela. O QR Code aponta para o GitHub Pages publicado.</p>
+            </div>
+            <div class="card">
+              <h2>🏆 Classificação</h2><div id="teacherRank" class="ranking"></div>
+              <div id="playerCount" class="muted small"></div><button id="exportRank" class="secondary full" style="margin-top:12px">Exportar ranking CSV</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>FACDO • Simulação acadêmica • Sem registros aduaneiros reais • Não use dados pessoais sensíveis</footer>
+  <div id="toast" role="status" aria-live="polite" class="toast hidden"></div>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="./firebase-config.js"></script>
+  <script src="./questions.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

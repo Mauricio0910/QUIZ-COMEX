@@ -1,0 +1,13 @@
+COMEX QUIZ LIVE — INSTALAÇÃO RÁPIDA
+
+1) Leia GUIA_INSTALACAO.md.
+2) Crie projeto Firebase, habilite Authentication (Anonymous + Google) e Realtime Database.
+3) Preencha firebase-config.js e substitua o e-mail do professor em database.rules.json.
+4) Publique as regras no Firebase.
+5) Envie somente os arquivos desta pasta para a raiz do repositório GitHub.
+6) Ative Settings > Pages > Deploy from a branch > main > /(root).
+7) No Firebase Auth, autorize o domínio SEU-USUARIO.github.io.
+8) Abra a URL do site com ?professor=1, faça login Google e carregue o gabarito privado separado.
+9) Clique Nova sala / zerar, projete o QR e clique Iniciar jogo.
+
+NUNCA ENVIE O GABARITO PRIVADO PARA O GITHUB!
